@@ -6,8 +6,21 @@ def calcularValorComTaxaServico(valorTotal, taxaServico):
 
 def adqurirDados():
   valorTotal = float(input("Informe o valor total do consumo: R$ ").replace(',', '.'))
-  numeroPessoas = int(input("Informe o total de pessoas: "))
-  taxaServico = int(input("Informe o percentual da taxa do serviço, entre 0 e 100: "))
+
+  while True: 
+    numeroPessoas = int(float(input("Informe o total de pessoas: ")))
+    if type(numeroPessoas) == int and numeroPessoas > 0:
+      break
+    else: 
+      print('Valor inválido')
+
+  while True:
+    taxaServico = float(input("Informe o percentual da taxa do serviço, entre 0 e 100: "))
+    if type(taxaServico) == float and (taxaServico >= 0 and taxaServico <= 100):
+      break
+    else:
+      print('Valor inválido')
+  
   return {'valorTotal': valorTotal, 'numeroPessoas': numeroPessoas, 'taxaServico': taxaServico}
 
 def exibirInformacoes(valorComTaxaServico, numeroPessoas, valorPorPessoa):
